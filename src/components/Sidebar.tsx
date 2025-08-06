@@ -1,31 +1,33 @@
 import React from 'react';
-import GenreButton from './GenreButton';
 
-const Sidebar: React.FC = () => {
-  // Array of genres with associated colors
-  const genres = [
-    { label: 'JRPG', color: 'danger' },
-    { label: 'Action RPG', color: 'primary' },
-    { label: 'Puzzle', color: 'warning' },
-    { label: 'Shooter', color: 'success' },
-  ];
+interface Genre {
+  label: string;
+  color: string;
+}
 
+interface SidebarProps {
+  genres: Genre[];
+  onGenreSelect: (genre: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ genres, onGenreSelect }) => {
   return (
-    <div className="bg-dark text-light p-3" style={{ width: '250px', minHeight: '100vh' }}>
-      {/* Future search bar placeholder */}
+    <div>
       <div className="mb-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search (coming soon)"
-          disabled
-        />
+        <h5 className="text-light">Genres</h5>
       </div>
-
-      {/* Genre Buttons */}
       <div className="d-flex flex-column gap-2">
-        {genres.map(({ label, color }, index) => (
-          <GenreButton key={index} label={label} color={color} />
+        <button className="btn btn-light" onClick={() => onGenreSelect('')}>
+          All Games
+        </button>
+        {genres.map((genre) => (
+          <button
+            key={genre.label}
+            className={`btn btn-outline-${genre.color}`}
+            onClick={() => onGenreSelect(genre.label)}
+          >
+            {genre.label}
+          </button>
         ))}
       </div>
     </div>

@@ -1,35 +1,35 @@
-import type { Game } from '../gameData';
+import type { Game } from '../types/Game';
 
 interface Props {
   game: Game;
 }
 
-// This is a presentational component to display a single game's info
 const GameCard = ({ game }: Props) => {
   return (
     <div className="card bg-dark text-white h-100 shadow-sm">
-      {/* Cover image on top */}
+      {/* Game cover */}
       <img
-        src={game.imageUrl}
+        src={game.background_image || 'https://via.placeholder.com/300x200'}
         className="card-img-top"
-        alt={game.title}
-        style={{ objectFit: 'cover', height: '300px' }} // restrict image height
+        alt={game.name}
+        style={{ objectFit: 'cover', height: '300px' }}
       />
 
-      {/* Info section on bottom */}
       <div className="card-body d-flex flex-column justify-content-between">
-        <h5 className="card-title">{game.title}</h5>
+        <h5 className="card-title">{game.name}</h5>
         <p className="card-text mb-1">
-          <strong>Genre:</strong> {game.genre}
+          <strong>Genres:</strong>{' '}
+          {game.genres?.map((genre) => genre.name).join(', ') || 'N/A'}
         </p>
         <p className="card-text mb-1">
-          <strong>Platform:</strong> {game.platform}
+          <strong>Platforms:</strong>{' '}
+          {game.platforms
+            ?.map((p) => p.platform?.name)
+            .filter(Boolean)
+            .join(', ') || 'N/A'}
         </p>
         <p className="card-text mb-1">
-          <strong>Release Date:</strong> {game.releaseDate}
-        </p>
-        <p className="card-text">
-          <strong>Rating:</strong> {game.rating}
+          <strong>Release Date:</strong> {game.released || 'N/A'}
         </p>
       </div>
     </div>
