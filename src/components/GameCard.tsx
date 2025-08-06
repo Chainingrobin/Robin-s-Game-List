@@ -17,10 +17,12 @@ const GameCard = ({ game }: Props) => {
 
       <div className="card-body d-flex flex-column justify-content-between">
         <h5 className="card-title">{game.name}</h5>
+        
         <p className="card-text mb-1">
           <strong>Genres:</strong>{' '}
           {game.genres?.map((genre) => genre.name).join(', ') || 'N/A'}
         </p>
+
         <p className="card-text mb-1">
           <strong>Platforms:</strong>{' '}
           {game.platforms
@@ -28,8 +30,13 @@ const GameCard = ({ game }: Props) => {
             .filter(Boolean)
             .join(', ') || 'N/A'}
         </p>
+
         <p className="card-text mb-1">
           <strong>Release Date:</strong> {game.released || 'N/A'}
+        </p>
+
+        <p className="card-text mb-1">
+          <strong>Rating:</strong> {game.rating?.toFixed(1) || 'N/A'} ⭐
         </p>
       </div>
     </div>

@@ -3,6 +3,15 @@ export interface Game {
   name: string;
   released: string;
   background_image: string;
-  platforms: { platform: { name: string } }[];
-  genres: { name: string }[];
+  rating: number; 
+  platforms: {
+    platform: {
+      id: number;
+      name: string;
+    };
+  }[];
+  genres: {
+    id: number;
+    name: string;
+  }[];
 }
