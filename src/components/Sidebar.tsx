@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Genre } from '../types/Genre'; // Update path if needed
+import type { Genre } from '../types/Genre';
 
 interface SidebarProps {
   genres: Genre[];
@@ -8,16 +8,16 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ genres, onGenreSelect }) => {
   return (
-    <div className='sidebar-container'>
+    <div className="sidebar-container">
       {/* Section Title */}
-      <div className="mb-4 ">
-        <h3 className='all-games-header'>Genres</h3>
+      <div className="mb-4">
+        <h3 className="all-games-header">Genres</h3>
       </div>
 
       {/* Genre Buttons */}
-      <div className="genre-button d-flex flex-column gap-2">
+      <div className="d-flex flex-column gap-2">
         <button
-          
+          className="genre-button"
           onClick={() => onGenreSelect(null)}
         >
           All Games

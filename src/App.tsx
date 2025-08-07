@@ -14,11 +14,12 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 import GameCardSkeleton from './components/GameCardSkeleton';
 
 
+
 import './styles/customstyle.css';
 import './styles/nier.css';
 
 function App() {
-  
+
   const [games, setGames] = useState<Game[]>([]);
   const [selectedSort, setSelectedSort] = useState<SortOption>('default');
   const [isAZ, setIsAZ] = useState(true); // NEW: track A-Z or Z-A
@@ -82,19 +83,30 @@ useEffect(() => {
 
   return (
     <div>
-      <header className="d-flex align-items-center px-4 py-3">
-        <h1 className="benguiat-header mb-0 me-4">Robin's Game List</h1>
-        <div className="flex-grow-1">
-          <SearchBar
-            query={searchQuery}
-            onChange={(value) => {
-              setSearchQuery(value);
-              setCurrentPage(1);
-            }}
-            totalGames={totalGames}
-          />
-        </div>
-      </header>
+<header className="d-flex align-items-center px-4 py-3">
+  <div className="d-flex align-items-center me-4">
+    <h1 className="benguiat-header mb-0">Robin's Game List</h1>
+    <img
+      src={`${import.meta.env.BASE_URL}assets/yorha-logo.svg`}
+      alt="YoRHa Logo"
+      className="yorha-logo"
+    />
+  </div>
+
+  <div className="flex-grow-1">
+    <SearchBar
+      query={searchQuery}
+      onChange={(value) => {
+        setSearchQuery(value);
+        setCurrentPage(1);
+      }}
+      totalGames={totalGames}
+    />
+  </div>
+</header>
+
+
+
 
       <div className="container-fluid">
         <div className="row">

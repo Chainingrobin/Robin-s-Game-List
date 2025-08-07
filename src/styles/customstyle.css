@@ -21,10 +21,26 @@ header {
   background-color: rgba(92, 64, 51, 0.05);
 }
 
+.yorha-logo {
+  width: 30px;               /* Keeps layout tight */
+  height: auto;
+  padding-left: 5px;
+  padding-top: 5px;
+  flex-shrink: 0;
+  object-fit: contain;
+  image-rendering: auto;
+  display: inline-block;
+
+  transform: scale(1.9);     /* Visually enlarges the image */
+  transform-origin: left center; /* Keeps it anchored to the left */
+}
+
+
 
 .benguiat-header {
   font-family: 'Benguiat', sans-serif;
-  font-size: 45px;
+  font-size: 2.8rem; /* slightly smaller */
+  white-space: nowrap;
   font-weight: bolder;
   
 }
@@ -43,12 +59,34 @@ header {
 .custom-game-card {
   border-radius: 0px;
   overflow: hidden;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #454138 ;
+  background-color: #454138;
   color: #dcd8c0;
-  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Firefox / GPU Optimization */
+  transform: translate3d(0, 0, 0);   /* Replaces transform-style: flat */
+  will-change: transform;
+  contain: strict;
+  contain-intrinsic-size: 250px 360px; /* Helps layout predictability */
+  isolation: isolate;                 /* Improves stacking context perf */
+
+  aspect-ratio: 3 / 4;
+  min-height: 360px;
+  background-clip: padding-box;
+
+  outline: 1px solid transparent; /* Anti-aliasing trick */
+  image-rendering: auto;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-game-card-wrapper {
+  perspective: 1000px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .card-title {
@@ -57,7 +95,6 @@ header {
   margin-bottom: 14px;
 }
 
-/* Game card image area */
 .game-card-image-wrapper {
   width: 100%;
   height: 200px;
@@ -69,6 +106,8 @@ header {
   height: 100%;
   object-fit: cover;
   display: block;
+  image-rendering: auto;
+  transform: translate3d(0, 0, 0);
 }
 
 /* Search bar layout */
@@ -79,8 +118,9 @@ header {
   border-radius: 999px;
   outline: none;
   margin-top: 20px;
-  margin-left: 550px;
+  margin-left: 530px;
   font-size: 1rem;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
 }
 
 /* Sidebar & layout structure */
@@ -114,14 +154,21 @@ header {
 }
  
 .genre-button {
-  padding-right: 15px;
-  font-size: 1.5rem;
-  width: 100%;           /* or max-width: 200px; */
+  font-size: 1.5rem !important;
+  padding: 8px 15px;
+  width: 100%;
   border-radius: 8px;
   text-align: center;
-  margin-bottom: 5px;   /* space between buttons */
-}
+  margin-bottom: 10px;
 
+  background-color: #454138;
+  color: #dcd8c0;
+  border: none;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+}
 /*PAGE BUTTONS*/
 .custom-pagination {
   display: flex;
@@ -129,6 +176,7 @@ header {
   list-style: none;
   gap: 0.5rem;
   padding: 0;
+  
 }
 
 .pagination-button {
@@ -139,6 +187,7 @@ header {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
 }
 
 .pagination-button:hover:not(:disabled) {
@@ -183,14 +232,23 @@ button.scroll-to-top {
 /*DROPDOWN LIST*/
 
 .custom-dropdown {
+  appearance: none;        /* Removes native arrow (works in most modern browsers) */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
   width: 200px;
-  background-color: #454138; /* Dark brown */
-  color: #ccc8b1; /* Beige text */
-  border: 1px solid #454138; /* Slightly lighter brown border */
+  background-color: #454138;
+  color: #ccc8b1;
+  border: 1px solid #454138;
   padding: 8px 12px;
   font-size: 18px;
   border-radius: 0px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 5, 5);
+
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='%23ccc8b1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
 }
 
 .custom-dropdown:focus {
