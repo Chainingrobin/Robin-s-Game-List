@@ -189,7 +189,7 @@ button.scroll-to-top {
   border: 1px solid #454138; /* Slightly lighter brown border */
   padding: 8px 12px;
   font-size: 18px;
-  border-radius: 4px;
+  border-radius: 0px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -201,8 +201,10 @@ button.scroll-to-top {
 
 .custom-dropdown option {
   background-color: #454138; /* Same dark brown */
-  color: #ccc8b1;           /* Beige */
+  color: #ccc8b1;        /* Beige */
 }
+
+
 
 /* Toggle arrow button (↑ / ↓) */
 .toggle-arrow-btn {
