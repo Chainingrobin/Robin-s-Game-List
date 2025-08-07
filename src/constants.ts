@@ -4,7 +4,7 @@ export const genres = [
   { label: 'Action', slug: 'action', color: 'primary' },
   { label: 'Strategy', slug: 'strategy', color: 'warning' },
   { label: 'RPG', slug: 'role-playing-games-rpg', color: 'danger' },
-  { label: 'Free Online Games', slug: 'massively-multiplayer', color: 'info' },
+  { label: 'Free Online', slug: 'massively-multiplayer', color: 'info' },
   { label: 'Shooter', slug: 'shooter', color: 'success' },
   { label: 'Adventure', slug: 'adventure', color: 'secondary' },
   { label: 'Puzzle', slug: 'puzzle', color: 'dark' },
@@ -34,16 +34,21 @@ export const platformOptions = [
 export type PlatformFilter = 'All' | 'PC' | 'PlayStation' | 'Xbox' | 'Nintendo' | 'Other';
 
 
-// Make sure your sortOptions map to valid RAWG `ordering` values:
+
 export const sortOptions = [
   { label: 'Default', value: 'default' },
-  { label: 'Name (A-Z)', value: 'name' },
-  { label: 'Release Date', value: '-released' },
-  { label: 'Rating', value: '-rating' },
-  { label: 'Popularity', value: '-added' },
+  { label: 'Name', value: 'name' },
+  { label: 'Release Date', value: 'released' },
+  { label: 'Rating', value: 'rating' }
 ];
 
-export type SortOption = 'default' | 'name' | '-released' | '-rating' | '-added';
-
+export type SortOption =
+  | 'default'
+  | 'name'
+  | '-name'
+  | 'released'
+  | '-released'
+  | 'rating'
+  | '-rating';
 
 

@@ -1,0 +1,273 @@
+/* Fonts (just font-face declarations retained) */
+@font-face {
+  font-family: 'Benguiat';
+  src: url('/fonts/Benguiat/ITCBenguiat.woff2') format('woff2'),
+       url('/fonts/Benguiat/ITCBenguiat.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Basic logical reset */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Titles and headers (structure only) */
+header {
+  border-bottom: 1px solid rgba(92, 64, 51, 0.05);
+  background-color: rgba(92, 64, 51, 0.05);
+}
+
+
+.benguiat-header {
+  font-family: 'Benguiat', sans-serif;
+  font-size: 45px;
+  font-weight: bolder;
+  
+}
+
+.all-games-header {
+  font-family: 'Benguiat', sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(92, 64, 51, 0.2);
+  display: inline-block; /* ensures border fits text width */
+  padding-bottom: 4px;    /* optional spacing from text to line */
+  margin-bottom: 12px;    /* optional spacing under the heading */
+}
+
+/* Game card structure */
+.custom-game-card {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #454138 ;
+  color: #dcd8c0;
+  
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+/* Game card image area */
+.game-card-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.game-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Search bar layout */
+.custom-search-bar {
+  width: 500px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  outline: none;
+  margin-top: 20px;
+  margin-left: 550px;
+  font-size: 1rem;
+}
+
+/* Sidebar & layout structure */
+.container-fluid,
+.row {
+  margin: -5;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  z-index: 1;
+  border-right: 1px solid rgba(92, 64, 51, 0.05); /* ← faint brown line */
+  background-color: rgba(92, 64, 51, 0.05);
+}
+
+
+
+.content-area {
+  padding: 20px;
+  overflow: visible;
+}
+
+.row {
+  display: flex;
+}
+ 
+.genre-button {
+  padding-right: 15px;
+  font-size: 1.5rem;
+  width: 100%;           /* or max-width: 200px; */
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 5px;   /* space between buttons */
+}
+
+/*PAGE BUTTONS*/
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.pagination-button {
+  background-color: transparent;
+  color: var(--text-color, #ccc); /* adjust to fit your theme */
+  border: 1px solid var(--border-color, #555);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.pagination-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.active-page {
+  background-color: #454138 !important; /* same as game cards */
+  color: #dcd8c0 !important;           /* soft light gold text */
+  font-weight: bold;
+  border: none;
+}
+
+
+.pagination-ellipsis {
+  color: var(--text-color, #454138);
+  padding: 6px 12px;
+}
+
+button.scroll-to-top {
+  position: fixed !important; /* ⬅️ Force override */
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/*DROPDOWN LIST*/
+
+.custom-dropdown {
+  width: 200px;
+  background-color: #454138; /* Dark brown */
+  color: #ccc8b1; /* Beige text */
+  border: 1px solid #454138; /* Slightly lighter brown border */
+  padding: 8px 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-dropdown:focus {
+  outline: none;
+  border-color: #ccc8b1;
+  box-shadow: 0 0 4px rgba(245, 230, 208, 0.3);
+}
+
+.custom-dropdown option {
+  background-color: #454138; /* Same dark brown */
+  color: #ccc8b1;           /* Beige */
+}
+
+/* Toggle arrow button (↑ / ↓) */
+.toggle-arrow-btn {
+  background-color: #454138;
+  color: #ccc8b1;
+  border: 1px solid #454138;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-arrow-btn:hover {
+  background-color: #5c5648;
+}
+
+
+/*Loading Skeleton*/
+/* Skeleton container matches card layout */
+.skeleton-card {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #454138;
+}
+
+/* Skeleton image wrapper mimics image area */
+.skeleton-image {
+  width: 100%;
+  height: 200px;
+  background-color: #5a5544; /* darker tone placeholder */
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Skeleton title placeholder */
+.skeleton-title {
+  height: 20px;
+  width: 80%;
+  margin: 16px auto 0 auto;
+  background-color: #5a5544;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Optional: simulate 2 lines of description */
+.skeleton-line {
+  height: 14px;
+  width: 70%;
+  margin: 8px auto;
+  background-color: #5a5544;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Shimmer / pulse animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

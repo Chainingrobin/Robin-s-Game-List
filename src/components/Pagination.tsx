@@ -20,17 +20,20 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   if (totalPages <= 1) return null;
 
-  // Get pages to show (e.g., [1, 'ellipsis', 4, 5, 6, 'ellipsis', 15])
   const visiblePages = getVisiblePageNumbers(currentPage, totalPages);
 
   return (
     <div className="mt-4 text-center">
       <nav>
-        <ul className="pagination justify-content-center mb-2">
+        <ul className="custom-pagination">
           
           {/* Previous Button */}
-          <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-            <button className="page-link" onClick={() => onPageChange(currentPage - 1)}>
+          <li>
+            <button
+              className="pagination-button"
+              onClick={() => onPageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
               Previous
             </button>
           </li>
@@ -38,21 +41,19 @@ const Pagination: React.FC<PaginationProps> = ({
           {/* Page Buttons */}
           {visiblePages.map((page, index) => {
             if (page === 'ellipsis') {
-              // If page is 'ellipsis', render non-clickable item
               return (
-                <li key={`ellipsis-${index}`} className="page-item disabled">
-                  <span className="page-link text-white bg-transparent border-0">…</span>
+                <li key={`ellipsis-${index}`}>
+                  <span className="pagination-ellipsis">…</span>
                 </li>
               );
             }
 
-            // Render clickable page number button
             return (
-              <li
-                key={page}
-                className={`page-item ${currentPage === page ? 'active' : ''}`}
-              >
-                <button className="page-link" onClick={() => onPageChange(page)}>
+              <li key={page}>
+                <button
+                  className={`pagination-button ${currentPage === page ? 'active-page' : ''}`}
+                  onClick={() => onPageChange(page)}
+                >
                   {page}
                 </button>
               </li>
@@ -60,8 +61,12 @@ const Pagination: React.FC<PaginationProps> = ({
           })}
 
           {/* Next Button */}
-          <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-            <button className="page-link" onClick={() => onPageChange(currentPage + 1)}>
+          <li>
+            <button
+              className="pagination-button"
+              onClick={() => onPageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
               Next
             </button>
           </li>
@@ -69,8 +74,8 @@ const Pagination: React.FC<PaginationProps> = ({
       </nav>
 
       {/* Results Text */}
-      <div className="text-white small">
-        Showing <strong>{resultsRange.start}</strong>–<strong>{resultsRange.end}</strong> of <strong>{resultsRange.total}</strong> results
+      <div className="results-text">
+        Showing <strong>{resultsRange.start}</strong>–<strong>{resultsRange.end}</strong> of <strong>{resultsRange.total.toLocaleString()}</strong> results
       </div>
     </div>
   );

@@ -1,41 +1,33 @@
 import React from 'react';
-
-interface Genre {
-  label: string;
-  slug: string;
-  color: string;
-}
+import type { Genre } from '../types/Genre'; // Update path if needed
 
 interface SidebarProps {
   genres: Genre[];
-  onGenreSelect: (slug: string) => void;
+  onGenreSelect: (genre: Genre | null) => void;
 }
-
-// Utility to determine text color based on Bootstrap background class
-const getTextColor = (bgColor: string): string => {
-  const lightBackgrounds = ['warning', 'light', 'info'];
-  return lightBackgrounds.includes(bgColor) ? 'text-dark' : 'text-white';
-};
 
 const Sidebar: React.FC<SidebarProps> = ({ genres, onGenreSelect }) => {
   return (
-    <div>
+    <div className='sidebar-container'>
       {/* Section Title */}
-      <div className="mb-4">
-        <h5 className="text-light">Genres</h5>
+      <div className="mb-4 ">
+        <h3 className='all-games-header'>Genres</h3>
       </div>
 
-      {/* Buttons */}
-      <div className="d-flex flex-column gap-2">
-        <button className="btn btn-light text-dark" onClick={() => onGenreSelect('')}>
+      {/* Genre Buttons */}
+      <div className="genre-button d-flex flex-column gap-2">
+        <button
+          
+          onClick={() => onGenreSelect(null)}
+        >
           All Games
         </button>
 
         {genres.map((genre) => (
           <button
-            key={genre.label}
-            className={`btn btn-${genre.color} ${getTextColor(genre.color)}`}
-            onClick={() => onGenreSelect(genre.slug)}
+            key={genre.slug}
+            className="genre-button"
+            onClick={() => onGenreSelect(genre)}
           >
             {genre.label}
           </button>
