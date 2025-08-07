@@ -6,5 +6,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export default defineConfig({
+  base: '/Robin-s-Game-List/',
   plugins: [react()],
 })
