@@ -18,6 +18,7 @@ import './styles/customstyle.css';
 import './styles/nier.css';
 
 function App() {
+  
   const [games, setGames] = useState<Game[]>([]);
   const [selectedSort, setSelectedSort] = useState<SortOption>('default');
   const [isAZ, setIsAZ] = useState(true); // NEW: track A-Z or Z-A
@@ -29,6 +30,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const gamesPerPage = 24;
+
+
 useEffect(() => {
   const fetchGames = async () => {
     try {

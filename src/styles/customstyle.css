@@ -41,7 +41,7 @@ header {
 
 /* Game card structure */
 .custom-game-card {
-  border-radius: 12px;
+  border-radius: 0px;
   overflow: hidden;
   height: 100%;
   display: flex;
