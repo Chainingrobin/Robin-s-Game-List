@@ -3,13 +3,15 @@
 /**
  * This maps known platform slugs (from RAWG API) to image URLs.
  */
+const baseUrl = import.meta.env.BASE_URL;
+
 const platformSlugToIcon: Record<string, string> = {
-  pc: '/assets/windows.png',         // We'll handle mac/linux separately if needed
-  playstation: '/assets/playstation.png',
-  xbox: '/assets/xbox.png',
-  nintendo: '/assets/nintendo.png',
-  mac: '/assets/mac.png',
-  linux: '/assets/linux.png',
+  pc: `${baseUrl}assets/windows.png`,
+  playstation: `${baseUrl}assets/playstation.png`,
+  xbox: `${baseUrl}assets/xbox.png`,
+  nintendo: `${baseUrl}assets/nintendo.png`,
+  mac: `${baseUrl}assets/mac.png`,
+  linux: `${baseUrl}assets/linux.png`,
 };
 
 /**
