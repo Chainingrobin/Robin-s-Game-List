@@ -160,8 +160,8 @@ useEffect(() => {
 
               <div className="row">
                 {games.length === 0 && !isLoading && (
-                  <p className="text-warning">
-                    No games to show. Try changing filters or check your API key.
+                  <p>
+                    No games to show. Try changing filters or search parameters.
                   </p>
                 )}
 
